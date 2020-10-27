@@ -27,7 +27,7 @@ extern volatile uint8 PacketReadyFlag;
 extern int32 value_digit;
 
 /* Environment brightness */
-#define BRIGHTNESS_THRESHOLD XXXXX
+#define BRIGHTNESS_THRESHOLD 20000
 #define OVER_THRESHOLD 0 //the environment it's very illuminated
 #define UNDER_THRESHOLD 1 //the environment it's poorly illuminated
 
@@ -49,5 +49,9 @@ extern _Bool FlagWrongCharacter;
 void REDLed_Intensity();
 
 void MicroManager();
+
+void SendPacket();
+
+void CheckErrors();
 
 /* [] END OF FILE */

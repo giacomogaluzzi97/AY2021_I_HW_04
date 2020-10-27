@@ -22,8 +22,8 @@ CY_ISR(MY_ISR_ADC)
     DataBuffer[1] = value_digit >> 8;
     DataBuffer[2] = value_digit & 0xFF;
     
-    //if(value_digit <= BRIGHTNESS_THRESHOLD) /*...*/
-    
+    if(value_digit <= BRIGHTNESS_THRESHOLD) environment_status = UNDER_THRESHOLD;
+    if(value_digit > BRIGHTNESS_THRESHOLD) environment_status = OVER_THRESHOLD;
     
     
     /* Potentiometer channel */ 
