@@ -1,21 +1,16 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
-#include "project.h"
+/* ======================================== */
+/* ---------------- MAIN ------------------ */
+/* ======================================== */
+
+#include "InterruptRoutines.h"
 
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
 
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    UART_Start();
+    isr_ADC_StartEx(MY_ISR_ADC);
+    isr_RX_StartEx(MY_ISR_RX);
 
     for(;;)
     {

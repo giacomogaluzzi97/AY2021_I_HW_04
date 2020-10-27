@@ -8,8 +8,6 @@
 /* ---------------- ISR ADC --------------- */
 /* ======================================== */
 
-int32 value_digit;
-
 CY_ISR(MY_ISR_ADC)
 {
     Timer_ReadStatusRegister();
@@ -24,7 +22,7 @@ CY_ISR(MY_ISR_ADC)
     DataBuffer[1] = value_digit >> 8;
     DataBuffer[2] = value_digit & 0xFF;
     
-    if(value_digit <= BRIGHTNESS_THRESHOLD) /*...*/
+    //if(value_digit <= BRIGHTNESS_THRESHOLD) /*...*/
     
     
     
@@ -34,9 +32,12 @@ CY_ISR(MY_ISR_ADC)
     value_digit = ADC_DelSig_Read32();
     if(value_digit < 0) value_digit = 0;
     if(value_digit > 65535) value_digit = 65535;
+    IntensityFlag = 1;
     
     DataBuffer[3] = value_digit >> 8;
     DataBuffer[4] = value_digit & 0xFF;
+    
+    PacketReadyFlag = 1;
     
     
 }    
