@@ -3,6 +3,7 @@
 /* ======================================== */
 
 /* General */
+#include "project.h"
 #include "stdio.h"
 #include "cytypes.h"
 #include "UART.h"
@@ -27,22 +28,26 @@ extern int32 value_digit;
 
 /* Environment brightness */
 #define BRIGHTNESS_THRESHOLD XXXXX
-#define UNDER_THRESHOLD 0 //the environment it's poorly illuminated
-#define OVER_THRESHOLD 1 //the environment it's very illuminated
+#define OVER_THRESHOLD 0 //the environment it's very illuminated
+#define UNDER_THRESHOLD 1 //the environment it's poorly illuminated
 
-extern _Bool environment_status;
+extern uint8_t environment_status;
 extern _Bool IntensityFlag;
 
 /* Remote control */
-#define START 0
-#define STOP 1
+#define STOP 0
+#define START 1
+#define WORKING 2
 
-extern _Bool remote_activation;
+extern uint8_t remote_activation;
+extern _Bool FlagWrongCharacter;
 
 /* ======================================== */
 /* -------------- FUNCTIONS --------------- */
 /* ======================================== */
 
 void REDLed_Intensity();
+
+void MicroManager();
 
 /* [] END OF FILE */

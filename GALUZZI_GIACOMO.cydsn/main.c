@@ -10,12 +10,16 @@ int main(void)
 
     UART_Start();
     isr_ADC_StartEx(MY_ISR_ADC);
-    isr_RX_StartEx(MY_ISR_RX);
+    isr_UART_StartEx(MY_ISR_RX);
 
+    DataBuffer[0] = 0xA0;
+    DataBuffer[TRANSMIT_BUFFER_SIZE-1] = 0xC0;
+    
     for(;;)
     {
-        /* Place your application code here. */
+        MicroManager();  
     }
+    
 }
 
 /* [] END OF FILE */

@@ -58,14 +58,14 @@ CY_ISR(MY_ISR_RX)
         {
             case 'B':
             case 'b':
-                    /*...*/ //start all
+                    remote_activation = START;
                     break;
             case 'S':
             case 's':
-                    /*...*/ //stop all
+                    remote_activation = STOP;
                     break;
             default:
-                    /*...*/ //wrong char  
+                    FlagWrongCharacter = 1;
                     break;
         }    
     }    
