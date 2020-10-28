@@ -26,7 +26,7 @@ volatile uint8 PacketReadyFlag = 0;
 /* control the led intenisty with PWM */
 void REDLed_Intensity()
 {
-    if(IntensityFlag) PWM_REDLed_WriteCompare(value_digit);
+    if(IntensityFlag) PWM_REDLed_WriteCompare(65535 - value_digit);
     IntensityFlag = 0;
 }    
 
@@ -36,6 +36,7 @@ void SendPacket()
     if(PacketReadyFlag)
     {
         UART_PutArray(DataBuffer, TRANSMIT_BUFFER_SIZE);
+        UART_PutString("\r\n");
         PacketReadyFlag = 0;
     }    
 }
@@ -97,6 +98,7 @@ void MicroManager()
                         
                         break;
             default:
+                        CheckErrors();
                         break;
                           
         }
