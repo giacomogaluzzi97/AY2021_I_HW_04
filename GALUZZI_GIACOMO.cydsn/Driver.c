@@ -8,16 +8,18 @@
 int32 value_digit;
 
 /* Environment brightness */
-uint8_t environment_status = -1;
-_Bool IntensityFlag = 1;
+uint8_t environment_status         =-1;
+_Bool IntensityFlag                = 1;
 
 /* Remote control */
-uint8_t remote_activation = 0;
-_Bool FlagWrongCharacter = 0;
+uint8_t remote_activation          = 0;
+_Bool FlagWrongCharacter           = 0;
 
 /* Packet */
 uint8 DataBuffer[TRANSMIT_BUFFER_SIZE];
-volatile uint8 PacketReadyFlag = 0;
+volatile uint8 PacketReadyFlag     = 0;
+
+
 
 /* ======================================== */
 /* -------------- FUNCTIONS --------------- */

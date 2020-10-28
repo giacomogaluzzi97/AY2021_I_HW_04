@@ -16,22 +16,22 @@ CY_ISR(MY_ISR_ADC)
     AMux_FastSelect(PHOTOR_MUX_CHANNEL);
     
     value_digit = ADC_DelSig_Read32();
-    if(value_digit < 0) value_digit = 0;
-    if(value_digit > 65535) value_digit = 65535;
+    if(value_digit < 0)       value_digit = 0;
+    if(value_digit > 65535)   value_digit = 65535;
     
     DataBuffer[1] = value_digit >> 8;
     DataBuffer[2] = value_digit & 0xFF;
     
     if(value_digit <= BRIGHTNESS_THRESHOLD) environment_status = UNDER_THRESHOLD;
-    if(value_digit > BRIGHTNESS_THRESHOLD) environment_status = OVER_THRESHOLD;
+    if(value_digit > BRIGHTNESS_THRESHOLD)  environment_status = OVER_THRESHOLD;
     
     
     /* Potentiometer channel */ 
     AMux_FastSelect(POTEN_MUX_CHANNEL);
     
     value_digit = ADC_DelSig_Read32();
-    if(value_digit < 0) value_digit = 0;
-    if(value_digit > 65535) value_digit = 65535;
+    if(value_digit < 0)       value_digit = 0;
+    if(value_digit > 65535)   value_digit = 65535;
     IntensityFlag = 1;
     
     DataBuffer[3] = value_digit >> 8;
